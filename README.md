@@ -1,4 +1,7 @@
-# AngularDashboard
+# Angular Dashboard
+## <a name="introduction">Angular + Material Dashboard </a>
+
+<img src="https://github.com/rch-goldsnaker/angular-dashboard-template/blob/main//angular-dashboard.png" alt="Project Banner">
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
 
