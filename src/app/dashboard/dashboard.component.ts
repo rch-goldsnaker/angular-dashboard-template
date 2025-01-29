@@ -31,9 +31,9 @@ export class DashboardComponent {
     setInterval(() => {
       this.iframes.forEach((iframeRef) => {
         const iframe = iframeRef.nativeElement;
-        iframe.src += ''; // Esto funciona igual que en React
+        iframe.src += '';
       });
-    }, 10000); // Cada 30 segundos
+    }, 10000);
   }
 
   /** Based on the screen size, switch from standard to one column per row */
