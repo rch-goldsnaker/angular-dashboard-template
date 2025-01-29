@@ -1,12 +1,12 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="4" rowHeight="350px">
     @for (card of cards | async; track card) {
       <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-              {{card.title}}
+              {{ card.title }}
               <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
@@ -17,7 +17,92 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div>Card Content Here</div>
+            @if (card.title === 'Temperature') {
+              <iframe
+                #dashboardIframe
+                width="100%"
+                src="https://embed.tago.io?widget=67970235a5cc530008c13615&dashboard=679700b561a816000841bdc5&token=438b807f-0576-4740-810d-d64b1f1e651d"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            }
+            @if (card.title === 'Humidity') {
+              <iframe
+                #dashboardIframe
+                width="100%"
+                src="https://embed.tago.io?widget=679701ba9a6427000978faa9&dashboard=679700b561a816000841bdc5&token=fccb08cb-c70c-4436-8d4d-c5a2b3f7c3d2"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Temperature-Area') {
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://embed.tago.io?widget=679716ec7188ba0009be002a&dashboard=679700b561a816000841bdc5&token=fd7eec25-4d68-4145-a386-dfcdaaa7b40e"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Humidity-Area') {
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://embed.tago.io?widget=67970ac6a5cc530008c21957&dashboard=679700b561a816000841bdc5&token=f2560eaf-8fda-4a0c-ac22-4b1eff09bcc3"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Rssi') {
+              <iframe
+                width="100%"
+                src="https://embed.tago.io?widget=679709a69c86c100093e0bbe&dashboard=679700b561a816000841bdc5&token=75e951f8-21ad-4a01-a3fb-3686359cf2c5"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Snr') {
+              <iframe
+                width="100%"
+                src="https://embed.tago.io?widget=67970a1f20ac9d00094c17b0&dashboard=679700b561a816000841bdc5&token=a82194ed-817e-411a-aff8-2eb4cf285d90"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Batery') {
+              <iframe
+                width="100%"
+                src="https://embed.tago.io?widget=67970ab09c7a2300095e223f&dashboard=679700b561a816000841bdc5&token=80a09f68-6a47-45b3-9cd3-25c10baa608a"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+            @if (card.title === 'Ip') {
+              <iframe
+                width="100%"
+                src="https://embed.tago.io?widget=679704f39a64270009794cef&dashboard=679700b561a816000841bdc5&token=7272f9d9-f595-43c3-a7b2-14a0b8cad439"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
+
+            @if (card.title === 'Location') {
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://embed.tago.io?widget=679709d9e8e573000a4b882e&dashboard=679700b561a816000841bdc5&token=a0248948-6028-42f3-bd30-05c2b5f63360"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            }
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

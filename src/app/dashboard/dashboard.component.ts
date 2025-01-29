@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, QueryList, ViewChildren } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { AsyncPipe } from '@angular/common';
@@ -25,23 +25,44 @@ import { MatCardModule } from '@angular/material/card';
 export class DashboardComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
+  @ViewChildren('dashboardIframe') iframes!: QueryList<ElementRef<HTMLIFrameElement>>;
+
+  ngAfterViewInit() {
+    setInterval(() => {
+      this.iframes.forEach((iframeRef) => {
+        const iframe = iframeRef.nativeElement;
+        iframe.src += ''; // Esto funciona igual que en React
+      });
+    }, 10000); // Cada 30 segundos
+  }
+
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 2, rows: 1 },
-          { title: 'Card 2', cols: 2, rows: 1 },
-          { title: 'Card 3', cols: 2, rows: 1 },
-          { title: 'Card 4', cols: 2, rows: 1 }
+          { title: 'Temperature', cols: 4, rows: 1 },
+          { title: 'Humidity', cols: 4, rows: 1 },
+          { title: 'Temperature-Area', cols: 4, rows: 1 },
+          { title: 'Humidity-Area', cols: 4, rows: 1 },
+          { title: 'Rssi', cols: 4, rows: 1 },
+          { title: 'Snr', cols: 4, rows: 1 },
+          { title: 'Batery', cols: 4, rows: 1 },
+          { title: 'Ip', cols: 4, rows: 1 },
+          { title: 'Location', cols: 4, rows: 1 },
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Temperature', cols: 2, rows: 1 },
+        { title: 'Humidity', cols: 2, rows: 1 },
+        { title: 'Temperature-Area', cols: 2, rows: 1 },
+        { title: 'Humidity-Area', cols: 2, rows: 1 },
+        { title: 'Rssi', cols: 1, rows: 1 },
+        { title: 'Snr', cols: 1, rows: 1 },
+        { title: 'Batery', cols: 1, rows: 1 },
+        { title: 'Ip', cols: 1, rows: 1 },
+        { title: 'Location', cols: 4, rows: 1 },
       ];
     })
   );
