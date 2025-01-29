@@ -13,7 +13,7 @@ const char* password = "";                // Replace with your Wi-Fi password
 const char* apiEndpoint = "https://api.tago.io/data";
 
 // Device token (replace this with yours)
-const char* deviceToken = "feeb1919-4f5a-4ab3-897b-e291e5b8ec89";
+const char* deviceToken = "YOUR DEVICE TOKEN";
 
 void setup() {
   Serial.begin(115200); // Initialize the serial monitor
